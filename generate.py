@@ -132,8 +132,11 @@ def main():
              "caught fire. Saudi-led jets struck Hodeidah; the Houthis threatened "
              "Jeddah.",
              load(SANS, 20), 620, leading=26)
-    d.text((m, y + 8), "Shipping through the strait is down more than 40% this month.",
-           font=load(SANS_B, 19), fill=NAVY)
+    stat = "Shipping through the strait is down over 40% this month."
+    stat_fnt = load(SANS_B, 19)
+    stat_w = d.textlength(stat, font=stat_fnt)
+    assert stat_w <= 620, f"stat line too wide: {stat_w:.0f}px"
+    d.text((m, y + 8), stat, font=stat_fnt, fill=NAVY)
 
     # lead art panel: burning tanker over mines
     px, py, pw, ph = 700, 156, 288, 236
